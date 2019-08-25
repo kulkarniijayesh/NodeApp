@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+ nodeapp:
+  image: appimg
+  ports: 
+  - '5656'
+  build:
+   context: .
+  deploy:
+   replicas: 3
+   labels:
+   - "com.nodeapp=service with nodeapp containers"
