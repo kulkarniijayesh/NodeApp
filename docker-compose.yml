@@ -3,7 +3,9 @@ services:
  nodeapp:
   image: appimg
   ports: 
-  - '5656'
+  - target: 5656
+    published: 80
+    protocol: tcp
   build:
    context: .
   deploy:
