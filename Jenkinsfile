@@ -1,19 +1,14 @@
 pipeline {
-  agent any
+  agent {
+      docker { image '12.10-alpine'}
+  }
   stages {
-  stage('Stage 1') {
-      steps {
-        script {
-          echo 'Stage 1'
-        }
+      stage('Test Nodejs') {
+          steps {
+              sh 'node --version'
+              sh 'uname -a'
+              
+          }
       }
-    }
-  stage('Stage 2') {
-      steps {
-        script {
-          echo 'Stage 2'
-        }
-      }
-    }
   }
 }
