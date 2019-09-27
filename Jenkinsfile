@@ -1,9 +1,14 @@
 pipeline {
   agent {
-      docker { image 'node:alpine'}
+      dockerfile
+      { 
+          label 'webapp-container'
+          filename 'Dockerfile-webapp'
+      }
   }
   stages {
       stage('Pulling code') {
+          agent { label 'webapp-container' }
           steps {
               sh 'pwd'
               sh 'git clone https://github.com/kulkarniijayesh/NodeApp.git'
@@ -11,6 +16,7 @@ pipeline {
           }
         }
         stage('Installing dependancies'){
+            agent { label 'webapp-container' }
             steps {
                 sh 'pwd'
                 sh 'npm install'
@@ -18,6 +24,7 @@ pipeline {
     
         }
         stage('running application'){
+            agent { label 'webapp-container' }
             steps{
                 sh 'pwd'
                 sh 'npm start' 
