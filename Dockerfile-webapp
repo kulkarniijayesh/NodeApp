@@ -1,0 +1,3 @@
+FROM node:alpine
+RUN apk add git
+CMD tail -f /dev/null
