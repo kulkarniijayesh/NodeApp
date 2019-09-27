@@ -5,7 +5,7 @@ pipeline {
   stages {
       stage('Pulling code') {
           steps {
-              sh 'git pull https://github.com/kulkarniijayesh/NodeApp.git'
+              sh 'git clone https://github.com/kulkarniijayesh/NodeApp.git'
               
           }
         }
