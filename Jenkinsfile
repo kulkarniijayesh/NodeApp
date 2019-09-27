@@ -3,12 +3,23 @@ pipeline {
       docker { image 'node:alpine'}
   }
   stages {
-      stage('Test Nodejs') {
+      stage('Pulling code') {
           steps {
-              sh 'node --version'
-              sh 'uname -a'
+              sh 'git pull https://github.com/kulkarniijayesh/NodeApp.git'
               
           }
+          stage('Installing dependancies'){
+            steps {
+              sh 'npm install'
+            }
+        
+          }
+        stage('running application'){
+          steps{
+            sh 'npm run' 
+          }
+        }
+        
       }
   }
 }
