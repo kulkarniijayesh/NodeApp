@@ -8,18 +8,19 @@ pipeline {
               sh 'git pull https://github.com/kulkarniijayesh/NodeApp.git'
               
           }
-          stage('Installing dependancies'){
+        }
+        stage('Installing dependancies'){
             steps {
-              sh 'npm install'
+                sh 'npm install'
             }
-        
-          }
+    
+        }
         stage('running application'){
-          steps{
-            sh 'npm start' 
-          }
+            steps{
+                sh 'npm start' 
+            }
         }
         
-      }
+      
   }
 }
