@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls /etc/*-release'
-                sh 'cd NodeApp && sudo npm install'
+                sh 'cd NodeApp && npm install'
             }
     
         } 
@@ -26,7 +26,7 @@ pipeline {
             steps{
                 sh 'pwd'
                 sh 'ls /etc/*-release'
-                sh 'sudo npm start' 
+                sh 'npm start' 
             }
         }
         
