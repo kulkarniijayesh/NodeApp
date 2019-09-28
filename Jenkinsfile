@@ -21,7 +21,7 @@ pipeline {
                 sh 'cd NodeApp && sudo npm install'
             }
     
-        }
+        } 
         stage('running application'){
             steps{
                 sh 'pwd'
