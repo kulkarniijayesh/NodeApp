@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls /etc/*-release'
-                sh 'cd NodeApp && npm install'
+                sh 'cd NodeApp && npm install --unsafe-perm=true --allow-root'
             }
     
         } 
