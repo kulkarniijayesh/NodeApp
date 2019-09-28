@@ -2,7 +2,6 @@ pipeline {
   agent {
       dockerfile
       { 
-          label 'webapp-container'
           filename 'Dockerfile-webapp'
       }
   }
