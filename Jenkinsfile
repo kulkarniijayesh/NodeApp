@@ -5,6 +5,9 @@ pipeline {
           filename 'Dockerfile-webapp'
       }
   }
+  environment {
+        HOME = '.'
+    }
   stages {
       stage('Pulling code') {
           steps {
