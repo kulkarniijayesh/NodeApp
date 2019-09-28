@@ -1,2 +1,2 @@
 FROM node:12.8
-RUN apt update && apt install git
+RUN apt update && apt install git && npm install nodemon
