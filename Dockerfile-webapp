@@ -1,2 +1,2 @@
 FROM node:12.8
-RUN apt update && apt install git && npm install -g nodemon && npm i @babel/cli @babel/node @babel/core @babel/preset-env 
+RUN apt update && apt install git && npm install -g nodemon && npm i babel-cli
