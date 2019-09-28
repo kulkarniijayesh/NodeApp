@@ -29,7 +29,7 @@ pipeline {
             steps{
                 sh 'pwd'
                 sh 'ls /etc/*-release'
-                sh 'npm start' 
+                sh 'cd NodeApp && npm start' 
             }
         }
         
