@@ -11,7 +11,7 @@ pipeline {
               sh 'pwd'
               sh 'ls /etc/*-release'
               sh 'git clone https://github.com/kulkarniijayesh/NodeApp.git'
-              
+              sh 'chmod 777 NodeApp -R'
           }
         }
         stage('Installing dependancies'){
