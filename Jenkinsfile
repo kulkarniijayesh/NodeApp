@@ -3,7 +3,7 @@ pipeline {
       dockerfile
       { 
           filename 'Dockerfile-webapp'
-          args '-p 80:5656'
+          args '-p 8082:5656'
       }
   }
   environment {
