@@ -32,7 +32,7 @@ pipeline {
                 sh 'ls /etc/*-release'
                 sh 'cd NodeApp && mkdir lib && ./node_modules/.bin/babel server.js --out-dir ./lib/'
                 sh 'mv server.js server-dev.js' 
-                sh 'mv ./lib/server.js server.js'
+                sh 'cd NodeApp && mv ./lib/server.js server.js'
                 sh 'pm2 start server.js'
                 sh 'pm2 list' 
             }
