@@ -1,0 +1,14 @@
+FROM node:12.8
+RUN apt update && apt install git && \
+npm install -g nodemon && \
+npm i babel-cli && \
+npm i -g pm2 && \
+mkdir -p /var/www/NodeApp
+ADD /NodeApp/ /var/www/NodeApp
+WORKDIR /var/www/NodeApp
+RUN mkdir lib && ./node_modules/.bin/babel server.js --out-dir ./lib/ && \
+mv server.js server-dev.js && \
+mv ./lib/server.js server.js
+
+CMD ["pm2-runtime", "server.js"]
+EXPOSE 8083
