@@ -11,20 +11,21 @@ pipeline {
         HOME = '.'
     }
   stages {
-      stage('Pulling code') {
-          steps {
-              sh 'pwd'
-              sh 'ls /etc/*-release'
-              sh 'git clone https://github.com/kulkarniijayesh/NodeApp.git'
-              sh 'chmod 777 NodeApp -R'
-          }
-        }
         stage('Installing dependancies'){
+            agent {
+                dockerfile
+                {
+                    filename 'Dockerfile-webapp'
+                    args '-p 8082:5656'
+                }
+            }
             steps {
-                sh 'pwd'
-                sh 'ls /etc/*-release'
-                //sh 'cd NodeApp && npm install --unsafe-perm=true --allow-root && touch test44 && cd ..'
-                //stash name: 'app', includes: 'NodeApp/test44' 
+                sh 'npm install --unsafe-perm=true --allow-root'
+                sh 'mkdir lib && ./node_modules/.bin/babel server.js --out-dir ./lib/'
+                sh 'mv server.js server-dev.js' 
+                sh 'mv ./lib/server.js server.js'
+                stash name: 'app-node-modules', includes: 'node_modules/**'
+                stash name: 'app', includes: 'server.js'
             }
     
         } 
@@ -33,7 +34,8 @@ pipeline {
                 label 'ubuntu-slave-1'
             }
             steps{
-                //unstash 'app'
+                unstash 'app-node-modules'
+                unstash 'app'
                 sh 'pwd'
                 sh 'echo "fetched build artifacts."'
                 //sh 'docker rmi node-app-deploy-image && docker rm nodeapp'
