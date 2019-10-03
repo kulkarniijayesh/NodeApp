@@ -29,7 +29,7 @@ pipeline {
         } 
         stage('running application'){
             agent {
-                label 'ubuntu-slave-1'
+                label 'master'
             }
             steps{
                 //unstash 'app'
