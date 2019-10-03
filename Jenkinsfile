@@ -9,7 +9,7 @@ pipeline {
   //}
   environment {
         HOME = '.'
-        BUILD_ID = 'dontKillMe /usr/local/bin/pm2'
+        JENKINS_NODE_COOKIE = 'dontKillMe /usr/local/bin/pm2'
     }
   stages {
         stage('Installing dependancies'){
