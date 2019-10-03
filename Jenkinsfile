@@ -1,11 +1,11 @@
 pipeline {
-  agent {
-      dockerfile
-      { 
-          filename 'Dockerfile-webapp'
-          args '-p 8082:5656'
-      }
-  }
+  //agent {
+  //    dockerfile
+  //    { 
+  //        filename 'Dockerfile-webapp'
+  //        args '-p 8082:5656'
+  //    }
+  //}
   environment {
         HOME = '.'
     }
@@ -22,14 +22,14 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls /etc/*-release'
-                sh 'cd NodeApp && npm install --unsafe-perm=true --allow-root && touch test44 && cd ..'
+                //sh 'cd NodeApp && npm install --unsafe-perm=true --allow-root && touch test44 && cd ..'
                 //stash name: 'app', includes: 'NodeApp/test44' 
             }
     
         } 
         stage('running application'){
             agent {
-                label 'master'
+                label 'ubuntu-slave-1'
             }
             steps{
                 //unstash 'app'
