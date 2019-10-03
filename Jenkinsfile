@@ -23,7 +23,7 @@ pipeline {
                 sh 'pwd'
                 sh 'ls /etc/*-release'
                 sh 'cd NodeApp && npm install --unsafe-perm=true --allow-root && touch test44 && cd ..'
-                stash name: 'app', includes: 'NodeApp/test44' 
+                //stash name: 'app', includes: 'NodeApp/test44' 
             }
     
         } 
