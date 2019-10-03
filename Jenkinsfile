@@ -9,6 +9,7 @@ pipeline {
   //}
   environment {
         HOME = '.'
+        BUILD_ID = 'dontKillMe /usr/local/bin/pm2'
     }
   stages {
         stage('Installing dependancies'){
@@ -38,7 +39,6 @@ pipeline {
                 unstash 'app'
                 sh 'echo "fetched build artifacts."'
                 sh 'pwd'
-                sh 'export BUILD_ID=dontKillMePlease'
                 sh 'pm2 start server.js'
                 sh 'echo "started app using pm2"'
                 sh 'pm2 list'
