@@ -39,7 +39,7 @@ pipeline {
                 sh 'echo "fetched build artifacts."'
                 sh 'pwd'
                 sh 'export BUILD_ID=dontKillMePlease'
-                sh 'pm2 restart server.js'
+                sh 'pm2 start server.js'
                 sh 'echo "started app using pm2"'
                 sh 'pm2 list'
                 //sh 'docker rmi node-app-deploy-image && docker rm nodeapp'
