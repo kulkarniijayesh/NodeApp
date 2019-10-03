@@ -48,13 +48,7 @@ pipeline {
                 //sh 'echo "successfully started NodeApp on port 8082"'
             }
         }
-        post {
-            always {
-                cleanWs()
-            }
-        }
         
-      
   }
   post {
       always {
