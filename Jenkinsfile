@@ -1,12 +1,5 @@
 pipeline {
   agent any
-  //agent {
-  //    dockerfile
-  //    { 
-  //        filename 'Dockerfile-webapp'
-  //        args '-p 8082:5656'
-  //    }
-  //}
   environment {
         HOME = '.'
         JENKINS_NODE_COOKIE = 'dontKillMe /usr/local/bin/pm2'
