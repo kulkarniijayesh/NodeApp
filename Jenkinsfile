@@ -23,6 +23,7 @@ pipeline {
                 sh 'pwd'
                 sh 'ls /etc/*-release'
                 sh 'cd NodeApp && npm install --unsafe-perm=true --allow-root'
+                stash includes: '/NodeApp/**', name: 'app' 
             }
     
         } 
@@ -31,9 +32,11 @@ pipeline {
                 label 'master'
             }
             steps{
-                sh 'docker rmi node-app-deploy-image && docker rm nodeapp'
-                sh 'docker -t node-app-deploy-image -f Dockerfile-deploy .'
-                sh 'docker run -d --name nodeapp -p 8082:8083 node-app-deploy-image'
+                unstash 'app'
+                sh 'ls'
+                //sh 'docker rmi node-app-deploy-image && docker rm nodeapp'
+                //sh 'docker -t node-app-deploy-image -f Dockerfile-deploy .'
+                //sh 'docker run -d --name nodeapp -p 8082:8083 node-app-deploy-image'
                 
                 //sh 'pwd'
                 //sh 'ls /etc/*-release'
