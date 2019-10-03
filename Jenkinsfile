@@ -33,7 +33,7 @@ pipeline {
             }
             steps{
                 unstash 'app'
-                sh 'ls -la'
+                sh 'echo fetched build artifacts.'
                 //sh 'docker rmi node-app-deploy-image && docker rm nodeapp'
                 //sh 'docker -t node-app-deploy-image -f Dockerfile-deploy .'
                 //sh 'docker run -d --name nodeapp -p 8082:8083 node-app-deploy-image'
