@@ -36,8 +36,11 @@ pipeline {
             steps{
                 unstash 'app-node-modules'
                 unstash 'app'
-                sh 'pwd'
                 sh 'echo "fetched build artifacts."'
+                sh 'pwd'
+                sh 'pm2 start server.js'
+                sh 'echo "started app using pm2"'
+                sh 'pm2 list'
                 //sh 'docker rmi node-app-deploy-image && docker rm nodeapp'
                 //sh 'docker -t node-app-deploy-image -f Dockerfile-deploy .'
                 //sh 'docker run -d --name nodeapp -p 8082:8083 node-app-deploy-image'
