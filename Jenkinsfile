@@ -32,7 +32,7 @@ pipeline {
                 label 'master'
             }
             steps{
-                unstash 'app'
+                //unstash 'app'
                 sh 'echo fetched build artifacts.'
                 //sh 'docker rmi node-app-deploy-image && docker rm nodeapp'
                 //sh 'docker -t node-app-deploy-image -f Dockerfile-deploy .'
@@ -46,6 +46,11 @@ pipeline {
                 //sh 'cd NodeApp && pm2 start server.js'
                 //sh 'pm2 list' 
                 //sh 'echo "successfully started NodeApp on port 8082"'
+            }
+        }
+        post {
+            always {
+                cleanWs()
             }
         }
         
