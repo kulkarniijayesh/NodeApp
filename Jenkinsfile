@@ -20,6 +20,7 @@ pipeline {
                 }
             }
             steps {
+                deleteDir()
                 sh 'npm install --unsafe-perm=true --allow-root'
                 sh 'mkdir lib && ./node_modules/.bin/babel server.js --out-dir ./lib/'
                 sh 'mv server.js server-dev.js' 
